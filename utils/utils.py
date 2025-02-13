@@ -1,22 +1,28 @@
 """
 Hardcoded coordinates for board cells, could be done dynamically in the future to support custom board sizes.
 And different screen sizes of course. Currently only supports 1920x1080.
+
+Chose to use the Box namedtuple because it allows easy back and forth between the center of a cell for clicking and the whole area of a cell for detection.
+
 For now this suffices well if all the initialization steps are done properly to ensure the sizes always match.
 
 Values gotten from get_utils.ipynb
 """
 
+from collections import namedtuple
+Box = namedtuple("Box", ["left", "top", "width", "height"])
+
 # easy
 easy_grid = [
-    [(691, 348), (726, 348), (760, 348), (795, 348), (830, 348), (864, 348), (899, 348), (934, 348), (968, 348)],
-    [(691, 383), (726, 383), (760, 383), (795, 383), (830, 383), (864, 383), (899, 383), (934, 383), (968, 383)],
-    [(691, 418), (726, 418), (760, 418), (795, 418), (830, 418), (864, 418), (899, 418), (934, 418), (968, 418)],
-    [(691, 453), (726, 453), (760, 453), (795, 453), (830, 453), (864, 453), (899, 453), (934, 453), (968, 453)],
-    [(691, 489), (726, 489), (760, 489), (795, 489), (830, 489), (864, 489), (899, 489), (934, 489), (968, 489)],
-    [(691, 524), (726, 524), (760, 524), (795, 524), (830, 524), (864, 524), (899, 524), (934, 524), (968, 524)],
-    [(691, 559), (726, 559), (760, 559), (795, 559), (830, 559), (864, 559), (899, 559), (934, 559), (968, 559)],
-    [(691, 594), (726, 594), (760, 594), (795, 594), (830, 594), (864, 594), (899, 594), (934, 594), (968, 594)],
-    [(691, 629), (726, 629), (760, 629), (795, 629), (830, 629), (864, 629), (899, 629), (934, 629), (968, 629)]
+  [Box(left=674, top=331, width=34, height=35), Box(left=708, top=331, width=34, height=35), Box(left=743, top=331, width=34, height=35), Box(left=778, top=331, width=34, height=35), Box(left=812, top=331, width=34, height=35), Box(left=847, top=331, width=34, height=35), Box(left=882, top=331, width=34, height=35), Box(left=916, top=331, width=34, height=35), Box(left=951, top=331, width=34, height=35)],
+  [Box(left=674, top=366, width=34, height=35), Box(left=708, top=366, width=34, height=35), Box(left=743, top=366, width=34, height=35), Box(left=778, top=366, width=34, height=35), Box(left=812, top=366, width=34, height=35), Box(left=847, top=366, width=34, height=35), Box(left=882, top=366, width=34, height=35), Box(left=916, top=366, width=34, height=35), Box(left=951, top=366, width=34, height=35)],
+  [Box(left=674, top=401, width=34, height=35), Box(left=708, top=401, width=34, height=35), Box(left=743, top=401, width=34, height=35), Box(left=778, top=401, width=34, height=35), Box(left=812, top=401, width=34, height=35), Box(left=847, top=401, width=34, height=35), Box(left=882, top=401, width=34, height=35), Box(left=916, top=401, width=34, height=35), Box(left=951, top=401, width=34, height=35)],
+  [Box(left=674, top=436, width=34, height=35), Box(left=708, top=436, width=34, height=35), Box(left=743, top=436, width=34, height=35), Box(left=778, top=436, width=34, height=35), Box(left=812, top=436, width=34, height=35), Box(left=847, top=436, width=34, height=35), Box(left=882, top=436, width=34, height=35), Box(left=916, top=436, width=34, height=35), Box(left=951, top=436, width=34, height=35)],
+  [Box(left=674, top=471, width=34, height=35), Box(left=708, top=471, width=34, height=35), Box(left=743, top=471, width=34, height=35), Box(left=778, top=471, width=34, height=35), Box(left=812, top=471, width=34, height=35), Box(left=847, top=471, width=34, height=35), Box(left=882, top=471, width=34, height=35), Box(left=916, top=471, width=34, height=35), Box(left=951, top=471, width=34, height=35)],
+  [Box(left=674, top=506, width=34, height=35), Box(left=708, top=506, width=34, height=35), Box(left=743, top=506, width=34, height=35), Box(left=778, top=506, width=34, height=35), Box(left=812, top=506, width=34, height=35), Box(left=847, top=506, width=34, height=35), Box(left=882, top=506, width=34, height=35), Box(left=916, top=506, width=34, height=35), Box(left=951, top=506, width=34, height=35)],
+  [Box(left=674, top=541, width=34, height=35), Box(left=708, top=541, width=34, height=35), Box(left=743, top=541, width=34, height=35), Box(left=778, top=541, width=34, height=35), Box(left=812, top=541, width=34, height=35), Box(left=847, top=541, width=34, height=35), Box(left=882, top=541, width=34, height=35), Box(left=916, top=541, width=34, height=35), Box(left=951, top=541, width=34, height=35)],
+  [Box(left=674, top=576, width=34, height=35), Box(left=708, top=576, width=34, height=35), Box(left=743, top=576, width=34, height=35), Box(left=778, top=576, width=34, height=35), Box(left=812, top=576, width=34, height=35), Box(left=847, top=576, width=34, height=35), Box(left=882, top=576, width=34, height=35), Box(left=916, top=576, width=34, height=35), Box(left=951, top=576, width=34, height=35)],
+  [Box(left=674, top=611, width=34, height=35), Box(left=708, top=611, width=34, height=35), Box(left=743, top=611, width=34, height=35), Box(left=778, top=611, width=34, height=35), Box(left=812, top=611, width=34, height=35), Box(left=847, top=611, width=34, height=35), Box(left=882, top=611, width=34, height=35), Box(left=916, top=611, width=34, height=35), Box(left=951, top=611, width=34, height=35)]
 ]
 
 # TODO: medium

@@ -1,6 +1,8 @@
 from pyautogui import alert, locateOnScreen, center, moveTo, click
 from time import sleep
 
+from utils.utils import easy_grid
+
 def start_game():
   alert("Starting game...", timeout=2000)
   
@@ -9,6 +11,26 @@ def start_game():
   click()
   sleep(0.2)
 
+def scan_board():
+  """
+  Goes through each cell in the grid and updates all number's surroundings.
+  Marks cells that are guaranteed mines.
+  """
+  pass
+def flag_mines():
+  """
+  Goes through each cell in the grid and flags cells that are marked as mines.
+  """
+  pass
+  
+def open_safe_cells():
+  """
+  Goes through each cell in the grid and opens numbers that are marked as completed.
+  There is this super nice QoL feature in minesweeper.online that you can click the number to reveal all the cells around it.
+  Only works if has enough mines around it.
+  """
+  pass
+  
 def play():
   """
   Plays the game
@@ -24,3 +46,7 @@ def play():
   it is required to implement algorithms for the more complex patterns that involve chains of logic shared between multiple numbers.
   """
   start_game()
+  scan_board()
+  flag_mines()
+  open_safe_cells()
+
