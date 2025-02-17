@@ -4,8 +4,11 @@ from time import sleep
 from utils.utils import easy_board
 
 def start_game():
+  """
+  Starts the game
+  Clicks the first designated cell marked with a green X
+  """
   alert("Starting game...", timeout=2000)
-  
   starting_point_xy = center(locateOnScreen("./images/gameplay/game_entrypoint.png", confidence=0.95))
   moveTo(starting_point_xy.x, starting_point_xy.y, duration=0.5)
   click()
@@ -25,8 +28,8 @@ def scan_value(value, image, board):
   for center_point in unique_centers:
     for cell_coords, cell_data in board.items():
       # Skip if satisfied or mine, those cells are already completed
-      if cell_data['state'] == "satisfied" or cell_data['state'] == "mine":
-        continue
+      # if cell_data['state'] == "satisfied" or cell_data['state'] == "mine":
+      #  continue
       
       cell_area = cell_data['area']
       # Check if center point falls within this cell's area
@@ -36,7 +39,8 @@ def scan_value(value, image, board):
 
 def remove_duplicates(boxes):
   """
-  Removes duplicate boxes from the list
+  Removes duplicate boxes from the provided list
+  Pretty much always required with pyautogui.locateAllOnScreen()
   """
   unique_boxes = []
   used_indices = set()
@@ -64,8 +68,10 @@ def remove_duplicates(boxes):
 
 def scan_board(board):
   """
-  Checks the whole board and updates cell states accordingly
+  Checks the whole board and updates cell states accordingly by
+  just calling each scan_value function for each number and state
   """
+  print("Scanning board...")
   # Scan for numbers 1-6
   scan_value("1", "num_1", board)
   scan_value("2", "num_2", board)
@@ -85,6 +91,7 @@ def analyze_board(board):
   guaranteed mines as mine and satisfied numbers as satisfied.
   """
   # List of states we want to check
+  print("Analyzing board...")
   allowed_states = ["1", "2", "3", "4", "5", "6"]
   
   for _, cell_data in board.items():
@@ -140,24 +147,36 @@ def flag_mines_and_open_safe_cells(board):
       sleep(0.1)
       click()
       cell_data['clicked'] = True
-
-def play():
+      
+def gameplay_loop():
   """
-  Plays the game
-  
-  Implement some sort of loop that goes through the board in 2 modes iteratively:
-  
-  1) Look for guaranteed mines
-  2) Open all safe squares
-  
-  ------------------------------------------------------------------
-  
-  Above might work for easy difficulty, but to eventually move to medium, hard or even evil difficulty,
-  it is required to implement algorithms for the more complex patterns that involve chains of logic shared between multiple numbers.
+  While the game is not finished:
+  1) Scan the board for numbers, mines and unopened cells
+  2) Check all the numbers and mark mines and satisfied numbers
+  3) Flag all mines and open all safe cells
+  4) Repeat
   """
-  start_game()
-  scan_board(easy_board)
-  for _ in range(10):
+  while (True):
     scan_board(easy_board)
     analyze_board(easy_board)
     flag_mines_and_open_safe_cells(easy_board)
+    try:
+      # Break after win screen is found
+      coords = locateOnScreen("./images/gameplay/you_won.png", confidence=0.99)
+      if coords:
+        break
+    except Exception:
+      continue      
+
+def finished():
+  """
+  Alert user when game is finished
+  """
+  alert("Game finished. Congratulations!", timeout=3000)
+  print("Game finished. Congratulations!")
+  
+def play():
+  
+  start_game()
+  gameplay_loop()
+  finished()
