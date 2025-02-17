@@ -2,17 +2,14 @@
 
 Idea is to automate minesweeper.online using pyautogui
 
-Algorithm will be far from optimal. Goal is to successfully complete a game of expert difficulty.
+Algorithm will most likely be far from optimal. Goal is to successfully complete a game of expert difficulty.
 
-**NOTE: Using macros in minesweeper.online IS against the rules and will result in an account ban**
+**NOTE: Using macros in minesweeper.online IS against the rules and will result in Account and IP ban**
 
-I will be testing and using this program without an account. Therefore I will gain no advantage in game progression systems or leaderboards
+https://github.com/user-attachments/assets/e27cc86b-b489-47b8-89c0-10a1c88b94d8
 
---------------------------------
 
-**EDIT:** Yeah looks like you should not use this program even without an account :D
 
-![image](https://github.com/user-attachments/assets/0b4617ad-1361-4932-8226-2017f27a0f2b)
 
 
 
