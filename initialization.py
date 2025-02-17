@@ -3,6 +3,7 @@ from time import sleep
 
 #TODO: Detect windowed browser, change to fullscreen
 #TODO: Detect other themes and convert to dark theme
+#TODO: Other than brave-browser?
 
 def open_browser():
   press("win")
@@ -10,7 +11,7 @@ def open_browser():
   write("brave", interval=0.1)
   sleep(0.1)
   press("enter")
-  sleep(0.5)
+  sleep(1)
 
 def open_minesweeper():
   write("minesweeper.online", interval=0.1)
